@@ -6,6 +6,7 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 CSK_YELLOW= "#F1D00A"
+TEAL = "#00A19D"
 FONT_NAME = "Courier"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
@@ -18,7 +19,7 @@ def reset_timer():
     global reps
     window.after_cancel(timer)
     canvas.itemconfig(timer_text, text=f"00:00")
-    timer_label.config(text="Timer", fg=CSK_YELLOW)
+    timer_label.config(text="Timer", fg=TEAL)
     checkmark_label.config(text="")
     reps = 0
 
@@ -67,7 +68,7 @@ window.title("Pomodoro")
 window.config(padx=100, pady=50, bg=YELLOW)
 
 
-timer_label = Label(text="Timer", fg=CSK_YELLOW, bg=YELLOW, font=(FONT_NAME, 48, "bold"))
+timer_label = Label(text="Timer", fg=TEAL, bg=YELLOW, font=(FONT_NAME, 48, "bold"))
 timer_label.grid(column=1, row=0)
 
 
