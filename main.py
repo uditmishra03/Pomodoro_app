@@ -1,5 +1,5 @@
 from tkinter import *
-import math
+import math, time
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -32,7 +32,7 @@ def start_timer():
     short_break_sec = SHORT_BREAK_MIN * 60
     long_break_sec = LONG_BREAK_MIN * 60
 
-    print(reps)
+    # print(reps)
     if reps % 8 == 0:
         count_down(long_break_sec)
         timer_label.config(text="Break", fg=RED)
@@ -43,6 +43,9 @@ def start_timer():
         count_down(work_sec)
         timer_label.config(text="Work", fg=GREEN)
 
+def pause_timer():
+    sleep_duration = float(pause_entry.get())*60
+    time.sleep(sleep_duration)
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 def count_down(count):
     count_min = math.floor(count / 60)
@@ -88,5 +91,15 @@ start_button.grid(column=0, row=2)
 
 reset_button = Button(text="Reset", highlightthickness=0, command=reset_timer)
 reset_button.grid(column=2, row=2)
+
+pause_label = Label(text="Pause for:", fg=RED, bg=YELLOW, font=(FONT_NAME, 12,))
+pause_label.grid(column=0, row=4)
+pause_entry = Entry(width=20)
+# pause_entry.insert(0, "in minutes")
+pause_entry.grid(column=1, row=4, sticky="nw")
+pause_minutes_label = Label(text="minutes", fg=RED, bg=YELLOW, font=(FONT_NAME, 10,))
+pause_minutes_label.grid(column=1, row=4, sticky="se")
+pause_button = Button(text="Pause", highlightthickness=0, command=pause_timer)
+pause_button.grid(column=2, row=4)
 
 window.mainloop()
