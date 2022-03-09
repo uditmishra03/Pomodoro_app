@@ -44,7 +44,7 @@ def start_timer():
         timer_label.config(text="Work", fg=GREEN)
 
 def pause_timer():
-    sleep_duration = float(pause_entry.get())*60
+    sleep_duration = float(pause_spinbox.get())*60
     time.sleep(sleep_duration)
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- # 
 def count_down(count):
@@ -92,12 +92,11 @@ start_button.grid(column=0, row=2)
 reset_button = Button(text="Reset", highlightthickness=0, command=reset_timer)
 reset_button.grid(column=2, row=2)
 
-pause_label = Label(text="Pause for:", fg=RED, bg=YELLOW, font=(FONT_NAME, 12,))
+pause_label = Label(text="I want:", fg=RED, bg=YELLOW, font=(FONT_NAME, 12,))
 pause_label.grid(column=0, row=4)
-pause_entry = Entry(width=20)
-# pause_entry.insert(0, "in minutes")
-pause_entry.grid(column=1, row=4, sticky="nw")
-pause_minutes_label = Label(text="minutes", fg=RED, bg=YELLOW, font=(FONT_NAME, 10,))
+pause_spinbox= Spinbox(from_=0, to=10, width=12)
+pause_spinbox.grid(column=1, row=4, sticky="nw")
+pause_minutes_label = Label(text="minute(s) of", fg=RED, bg=YELLOW, font=(FONT_NAME, 10,))
 pause_minutes_label.grid(column=1, row=4, sticky="se")
 pause_button = Button(text="Pause", highlightthickness=0, command=pause_timer)
 pause_button.grid(column=2, row=4)
